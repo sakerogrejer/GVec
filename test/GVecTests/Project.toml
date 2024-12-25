@@ -1,0 +1,4 @@
+name = "GVecTests"
+uuid = "e58f9044-b458-43bc-87e2-765657bc6ed1"
+authors = ["sakerogrejer <30735376+sakerogrejer@users.noreply.github.com>"]
+version = "0.1.0"
