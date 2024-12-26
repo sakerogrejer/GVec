@@ -29,6 +29,13 @@ Base.:/(v::Vec4, a::T) where T <: Number = Vec4(v.x / a, v.y / a, v.z / a, v.w /
 Base.:(==)(v1::Vec4, v2::Vec4) = v1.x == v2.x && v1.y == v2.y && v1.z == v2.z && v1.w == v2.w # Equality
 Base.:(!=)(v1::Vec4, v2::Vec4) = !(v1 == v2) # Inequality
 
+Base.abs(v::Vec4) = Vec4(abs(v.x), abs(v.y), abs(v.z), abs(v.w)) # Absolute value
+Base.sign(v::Vec4) = Vec4(sign(v.x), sign(v.y), sign(v.z), sign(v.w)) # Sign
+Base.min(v1::Vec4, v2::Vec4) = Vec4(min(v1.x, v2.x), min(v1.y, v2.y), min(v1.z, v2.z), min(v1.w, v2.w)) # Element-wise minimum
+Base.max(v1::Vec4, v2::Vec4) = Vec4(max(v1.x, v2.x), max(v1.y, v2.y), max(v1.z, v2.z), max(v1.w, v2.w)) # Element-wise maximum
+distance(v1::Vec4, v2::Vec4) = norm(v1 - v2) # Distance
+
+
 # Print
 Base.show(io::IO, v::Vec4) = print(io, "Vec4{", eltype(v), "}(", v.x, ", ", v.y, ", ", v.z, ", ", v.w, ")")
 Base.show(io::IO, ::MIME"text/plain", v::Vec4) = show(io, v)

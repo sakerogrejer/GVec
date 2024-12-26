@@ -33,6 +33,12 @@ Base.:/(v::Vec3, a::T) where T <: Number = Vec3(v.x / a, v.y / a, v.z / a) # Sca
 Base.:(==)(v1::Vec3, v2::Vec3) = v1.x == v2.x && v1.y == v2.y && v1.z == v2.z # Equality
 Base.:(!=)(v1::Vec3, v2::Vec3) = !(v1 == v2) # Inequality
 
+Base.abs(v::Vec3) = Vec3(abs(v.x), abs(v.y), abs(v.z)) # Absolute value
+Base.sign(v::Vec3) = Vec3(sign(v.x), sign(v.y), sign(v.z)) # Sign
+Base.min(v1::Vec3, v2::Vec3) = Vec3(min(v1.x, v2.x), min(v1.y, v2.y), min(v1.z, v2.z)) # Element-wise minimum
+Base.max(v1::Vec3, v2::Vec3) = Vec3(max(v1.x, v2.x), max(v1.y, v2.y), max(v1.z, v2.z)) # Element-wise maximum
+distance(v1::Vec3, v2::Vec3) = norm(v1 - v2) # Distance
+
 # Print
 Base.show(io::IO, v::Vec3) = print(io, "Vec3{", eltype(v), "}(", v.x, ", ", v.y, ", ", v.z, ")")
 Base.show(io::IO, ::MIME"text/plain", v::Vec3) = show(io, v)

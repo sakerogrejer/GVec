@@ -1,13 +1,15 @@
 module GVec
+
     include("Vectors/Vec2.jl")
     include("Vectors/Vec3.jl")
     include("Vectors/Vec4.jl")
     include("Matrix/Matrix.jl")
+    include("Scalar/Scalar.jl")
 
     export Vec2, Vec3, Vec4, Mat2, Mat3, Mat4
     export determinant, trace, inverse, to_matrix
     export zero, one, dot, cross, norm, normalize
-
+    export smootherstep, smoothstep, lerp, saturate, clamp, mix, step, smoothmin, smoothmax
 
     # Vector * Matrix
     function Base.:*(v::Vec2, m::Mat2)
@@ -57,6 +59,16 @@ module GVec
             m.p20 * v.x + m.p21 * v.y + m.p22 * v.z + m.p23 * v.w,
             m.p30 * v.x + m.p31 * v.y + m.p32 * v.z + m.p33 * v.w
         )
+    end
+
+    # Vec3 to RGB
+    function RGB(v::Vec3)
+        RGB(v.x, v.y, v.z)
+    end
+
+    # Vec4 to RGBA
+    function RGBA(v::Vec4)
+        RGBA(v.x, v.y, v.z, v.w)
     end
 
 end # module GVec

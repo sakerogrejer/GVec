@@ -3,3 +3,4 @@ uuid = "824c2fec-89eb-45d8-bfa4-e966e122bdfc"
 authors = ["sakerogrejer <30735376+sakerogrejer@users.noreply.github.com>"]
 version = "0.1.0"
 description = "A glsl styled vector library to make working with vector math feel more comfortable."
+
