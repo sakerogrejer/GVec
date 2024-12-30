@@ -14,7 +14,12 @@ Base.setindex!(v::Vec2, val, i::Int) = i == 1 ? (v.x = val) : (v.y = val) # Set 
 # Vector operations
 dot(v1::Vec2, v2::Vec2) = v1.x * v2.x + v1.y * v2.y # Dot product
 norm(v::Vec2) = sqrt(v.x^2 + v.y^2) # Norm
-normalize(v::Vec2) = v / norm(v) # Normalize
+
+function normalize(v::Vec2)
+    n = norm(v)
+    return n == 0 ? Vec2(zero(eltype(v))) : v / n
+end
+
 cross(v1::Vec2, v2::Vec2) = v1.x * v2.y - v1.y * v2.x # Cross product
 
 # Arithmetic operations
@@ -23,6 +28,10 @@ Base.:-(v1::Vec2, v2::Vec2) = Vec2(v1.x - v2.x, v1.y - v2.y)  # Subtraction
 Base.:*(a::T, v::Vec2) where T <: Number = Vec2(a * v.x, a * v.y) # Scalar multiplication
 Base.:*(v::Vec2, a::T) where T <: Number = Vec2(a * v.x, a * v.y) # Scalar multiplication
 Base.:/(v::Vec2, a::T) where T <: Number = Vec2(v.x / a, v.y / a) # Scalar division
+Base.:-(v::Vec2) = Vec2(-v.x, -v.y) # Negation
+Base.:+(v::Vec2, a::T) where T = Vec2(v.x + a, v.y + a) # Add scalar
+Base.:-(v::Vec2, a::T) where T = Vec2(v.x - a, v.y - a) # Subtract scalar
+Base.:+(a::T, v::Vec2) where T = Vec2(a + v.x, a + v.y) # Add scalar
 
 # Comparison operations
 Base.:(==)(v1::Vec2, v2::Vec2) = v1.x == v2.x && v1.y == v2.y # Equality
